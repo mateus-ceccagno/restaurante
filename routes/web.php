@@ -80,3 +80,5 @@ Route::get("/pedido/usuario/getprodutos/{id}", "App\Http\Controllers\PedidoUsuar
 Route::get('pedido/admin', "App\Http\Controllers\PedidoAdminController@index")->name("pedidoadmin.index");
 Route::get('pedido/admin/getpedidos', "App\Http\Controllers\PedidoAdminController@getPedidos")->name("pedidoadmin.getPedidos");
 Route::get('pedido/admin/gettipoprodutos', "App\Http\Controllers\PedidoAdminController@getTipoProdutos")->name("pedidoadmin.getTipoProdutos");
+Route::get('pedido/admin/getprodutos/{id}', "App\Http\Controllers\PedidoAdminController@getProdutos")->name("pedidoadmin.getProdutos");
+Route::get('pedido/admin/getpedidoprodutos/{id}', "App\Http\Controllers\PedidoAdminController@getPedidoProdutos")->name("pedidoadmin.getPedidoProdutos");

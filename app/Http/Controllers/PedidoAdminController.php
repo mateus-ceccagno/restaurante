@@ -27,12 +27,19 @@ class PedidoAdminController extends Controller
         return view('PedidoAdmin/index');
     }
 
+    public function getProdutos($id)
+    {
+        $produtos = DB::select('SELECT * FROM Produtos
+                                WHERE Produtos.Tipo_Produtos_id = ?', [$id]);
+        $response["success"] = true;
+        $response["message"] = "Consulta de tipo realizada com sucesso";
+        $response["return"] = $produtos;
+        return response()->json($response, 200);
+    }
+
     public function getTipoProdutos()
     {
-        // Não esquecer de dar use na classe DB
-        // use Illuminate\Support\Facades\DB;
         $tipoProdutos = DB::select('SELECT * FROM Tipo_Produtos');
-        // Crio a variável response que será enviada para o front-end
         $response["success"] = true;
         $response["message"] = "Consulta de tipo realizada com sucesso";
         $response["return"] = $tipoProdutos;
@@ -41,22 +48,25 @@ class PedidoAdminController extends Controller
 
     public function getPedidos()
     {
-        // Não esquecer de dar use na classe DB
-        // use Illuminate\Support\Facades\DB;
         $pedidos = DB::select('SELECT * FROM Pedidos ORDER BY Pedidos.id DESC');
-        // Crio a variável response que será enviada para o front-end
         $response["success"] = true;
         $response["message"] = "Consulta de tipo realizada com sucesso";
         $response["return"] = $pedidos;
         return response()->json($response, 200);
     }
 
-    public function getPedidoProdutos()
+    public function getPedidoProdutos($id)
     {
-        // Não esquecer de dar use na classe DB
-        // use Illuminate\Support\Facades\DB;
-        $pedidoProdutos = DB::select('SELECT Pedido_Produtos FROM Pedidos ORDER BY Pedidos.id DESC');
-        // Crio a variável response que será enviada para o front-end
+        $pedidoProdutos = DB::select('SELECT Pedido_Produtos.Pedidos_id,
+                                      Pedido_Produtos.Produtos_id,
+                                      Tipo_Produtos.descricao,
+                                      Produtos.nome,
+                                      Produtos.preco,
+                                      Pedido_Produtos.quantidade
+                                      FROM Pedido_Produtos
+                                      INNER JOIN Produtos on Pedido_Produtos.Produtos_id = Produtos.id
+                                      INNER JOIN Tipo_Produtos on Produtos.Tipo_Produtos_id = Tipo_Produtos.id
+                                      WHERE Pedido_Produtos.Pedidos_id = ?', [$id]);
         $response["success"] = true;
         $response["message"] = "Consulta de tipo realizada com sucesso";
         $response["return"] = $pedidoProdutos;

@@ -13,30 +13,9 @@
             </div>
             {{-- Parte do meio --}}
             <div class="col-md-6">
-                <h2 class="text-center">Pedido 8</h2>
+                <h2 id="id-h2-pedido" class="text-center"></h2>
                 {{-- Lista de produtos no pedido --}}
                 <div id="list-produtos" class="list-group my-3 overflow-auto">
-                    <span class="list-group-item">
-                        Pizza - Pepperoni - 1x
-                        <span class="class-icons-produto-list">
-                            <i class="fa-solid fa-pencil-square"></i>
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </span>
-                    <span class="list-group-item">
-                        Suco - Laranja - 2x
-                        <span class="class-icons-produto-list">
-                            <i class="fa-solid fa-pencil-square"></i>
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </span>
-                    <span class="list-group-item">
-                        Cerveja - Skol-Lata - 1x
-                        <span class="class-icons-produto-list">
-                            <i class="fa-solid fa-pencil-square"></i>
-                            <i class="fa-solid fa-trash"></i>
-                        </span>
-                    </span>
                 </div>
                 {{-- Input group bootstrap --}}
                 <div class="input-group my-3">
@@ -49,10 +28,7 @@
             <div class="col-md-3">
                 <select id="id-div-lista-tipo-produtos" class="form-select my-1">
                 </select>
-                <select class="form-select my-1">
-                    <option value="1">Pepperoni</option>
-                    <option value="4">Bacon</option>
-                    <option value="5">Quatro Queijos</option>
+                <select id="id-div-lista-produtos" class="form-select my-1">
                 </select>
                 <input type="number" class="form-control text-end my-1" value="1">
                 <a href="#" class="btn btn-secondary w-100">Adicionar Produto</a>
